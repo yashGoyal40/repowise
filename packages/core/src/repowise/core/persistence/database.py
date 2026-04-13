@@ -143,8 +143,8 @@ def create_engine(
     else:
         # PostgreSQL — increase pool for heavy indexing workloads
         kwargs["pool_pre_ping"] = True
-        kwargs["pool_size"] = 20
-        kwargs["max_overflow"] = 30
+        kwargs["pool_size"] = 1000
+        kwargs["max_overflow"] = 2000
         kwargs["pool_timeout"] = 120
 
     return create_async_engine(db_url, **kwargs)
