@@ -188,10 +188,10 @@ def create_app() -> FastAPI:
     app.include_router(chat.router)
     app.include_router(providers.router)
 
-    # Mount MCP server over SSE at /mcp
+    # Mount MCP server over streamable HTTP at /mcp
     from repowise.server.mcp_server._server import create_mcp_server
 
     mcp_server = create_mcp_server()
-    app.mount("/mcp", mcp_server.sse_app())
+    app.mount("/mcp", mcp_server.streamable_http_app())
 
     return app

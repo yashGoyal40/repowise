@@ -20,7 +20,7 @@ RUN npm install --production=false
 # Copy source and build
 COPY packages/web/ ./
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_PUBLIC_REPOWISE_API_URL=http://localhost:7337
+ENV NEXT_PUBLIC_REPOWISE_API_URL=
 RUN npm run build
 
 # ---------------------------------------------------------------------------
