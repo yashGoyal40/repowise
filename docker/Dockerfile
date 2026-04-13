@@ -43,7 +43,7 @@ COPY pyproject.toml README.md LICENSE MANIFEST.in ./
 COPY packages/core/ packages/core/
 COPY packages/cli/ packages/cli/
 COPY packages/server/ packages/server/
-RUN pip install --no-cache-dir ".[all]"
+RUN pip install --no-cache-dir ".[all,postgres]"
 
 # Copy built Next.js standalone output
 COPY --from=frontend-builder /app/.next/standalone /app/web
