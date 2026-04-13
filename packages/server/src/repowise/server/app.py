@@ -195,8 +195,12 @@ def create_app() -> FastAPI:
 
     # Mount MCP server (streamable HTTP) — session_manager started in lifespan
     from repowise.server.mcp_server._server import create_mcp_server
+    from mcp.server.transport_security import TransportSecuritySettings
 
     mcp_server = create_mcp_server()
+    mcp_server.settings.transport_security = TransportSecuritySettings(
+        enable_dns_rebinding_protection=False,
+    )
     app.state.mcp_server = mcp_server
     app.mount("/api", mcp_server.streamable_http_app())
 
