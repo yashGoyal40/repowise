@@ -198,6 +198,6 @@ def create_app() -> FastAPI:
 
     mcp_server = create_mcp_server()
     app.state.mcp_server = mcp_server
-    app.mount("", mcp_server.streamable_http_app())
+    app.mount("/api", mcp_server.streamable_http_app())
 
     return app
